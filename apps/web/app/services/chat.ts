@@ -1,4 +1,4 @@
-const API = "http://127.0.0.1:8000";
+const API = "https://project-helix-production-7047.up.railway.app";
 
 export async function getSessions(repositoryId: string) {
 
@@ -71,7 +71,7 @@ export async function streamMessage(
   sessionId: string,
   question: string
 ) {
-  const response = await fetch("http://127.0.0.1:8000/chat/message", {
+  const response = await fetch("https://project-helix-production-7047.up.railway.app/chat/message", {
     method: "POST",
 
     headers: {
