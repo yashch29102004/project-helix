@@ -139,4 +139,9 @@ class ParserService:
 
                 parsed.append(symbol)
 
-        return parsed
+        print("RETURNING RESPONSE")
+
+        return {
+            "success": True,
+            "parsed": len(parsed),
+        }
