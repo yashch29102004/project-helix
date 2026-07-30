@@ -11,7 +11,7 @@ from app.modules.embeddings.repository import EmbeddingRepository
 
 class EmbeddingService:
 
-    BATCH_SIZE = 100
+    BATCH_SIZE = 20
 
     @staticmethod
     async def generate(db: AsyncSession):

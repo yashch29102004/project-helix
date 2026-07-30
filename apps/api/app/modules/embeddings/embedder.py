@@ -35,6 +35,6 @@ class Embedder:
         return model.encode(
             texts,
             normalize_embeddings=True,
-            batch_size=32,
+            batch_size=4,
             show_progress_bar=False,
         ).tolist()
