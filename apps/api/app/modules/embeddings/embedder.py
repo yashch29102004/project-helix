@@ -9,7 +9,7 @@ class Embedder:
     def get_model(cls):
         if cls.model is None:
             cls.model = SentenceTransformer(
-                "BAAI/bge-base-en-v1.5"
+                "BAAI/bge-small-en-v1.5"
             )
         return cls.model
 

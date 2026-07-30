@@ -19,9 +19,9 @@ class CodeEmbedding(BaseModel):
     )
 
     embedding = mapped_column(
-        Vector(768)
+        Vector(384)
     )
 
     model_name: Mapped[str] = mapped_column(
-        default="BAAI/bge-base-en-v1.5"
+        default="BAAI/bge-small-en-v1.5"
     )
