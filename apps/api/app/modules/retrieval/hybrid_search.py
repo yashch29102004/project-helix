@@ -7,7 +7,7 @@ from app.modules.retrieval.config import (
     VECTOR_TOP_K,
     BM25_TOP_K,
 )
-from app.modules.retrieval.reranker.service import RerankerService
+# from app.modules.retrieval.reranker.service import RerankerService
 import re
 
 TOKEN_REGEX = re.compile(
@@ -117,20 +117,11 @@ class HybridSearch:
 
                 item["score"] += 100
 
-        reranked = RerankerService.rerank(
-            query,
-            merged,
+        logger.info("CrossEncoder disabled. Returning RRF results.")
+
+        merged.sort(
+            key=lambda x: x["score"],
+            reverse=True,
         )
 
-        logger.debug("FINAL RERANKED RESULTS")
-
-        for item in reranked[:10]:
-
-            logger.debug(
-                "%s | score=%s | rerank=%s",
-                item["chunk_name"],
-                item.get("score"),
-                item.get("rerank_score"),
-            )
-
-        return reranked[:top_k]
+        return merged[:top_k]
