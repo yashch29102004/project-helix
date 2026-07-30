@@ -34,9 +34,9 @@ export default function ChatInput({
 
   return (
 
-    <div className="border-t border-[#303030] p-4">
+    <div className="border-t border-[#303030] p-3 md:p-4 bg-zinc-950">
 
-    <div className="flex gap-3 text-white placeholder:text-zinc-500">
+    <div className="flex flex-col md:flex-row gap-3 text-white placeholder:text-zinc-500">
 
 
       <input
@@ -62,7 +62,7 @@ export default function ChatInput({
             focus:border-violet-500
             transition-all
           px-5
-          py-4
+          py-3
           outline-none
         "
       />
@@ -74,7 +74,10 @@ export default function ChatInput({
           className="
             bg-red-600
             hover:bg-red-500
+            w-full
+            md:w-auto
             px-7
+            py-3
             rounded-xl
           "
         >
@@ -87,7 +90,10 @@ export default function ChatInput({
           onClick={handleSend}
           disabled={disabled || !repositoryReady}
           className={`
+            w-full
+            md:w-auto
             px-7
+            py-4
             rounded-xl
             font-medium
             transition-all

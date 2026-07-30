@@ -52,14 +52,15 @@ export default function RepositoryTimeline({
                 border
                 border-yellow-500/30
                 bg-yellow-500/10
-                p-6
+                p-4
+                md:p-6
             "
         >
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
 
                 <div>
 
-                    <h3 className="font-semibold text-yellow-300">
+                    <h3 className="text-base md:text-lg font-semibold text-yellow-300">
                         🔒 Repository is learning...
                     </h3>
 
@@ -69,7 +70,7 @@ export default function RepositoryTimeline({
 
                 </div>
 
-                <span className="text-lg font-bold text-yellow-300">
+                <span className="self-start md:self-auto text-base md:text-lg font-bold text-yellow-300">
                     {progress}%
                 </span>
 
@@ -86,7 +87,7 @@ export default function RepositoryTimeline({
 
             </div>
 
-            <div className="mt-5 text-sm text-zinc-300">
+            <div className="mt-5 text-xs md:text-sm text-zinc-300">
 
                 Current Stage
 
@@ -136,13 +137,16 @@ export default function RepositoryTimeline({
                             )}
 
                             <span
-                                className={
-                                    completed
-                                        ? "text-green-400"
-                                        : current
-                                        ? "text-white"
-                                        : "text-zinc-500"
-                                }
+                                className={`
+                                    text-sm md:text-base
+                                    ${
+                                        completed
+                                            ? "text-green-400"
+                                            : current
+                                            ? "text-white"
+                                            : "text-zinc-500"
+                                    }
+                                `}
                             >
 
                                 {step.title}

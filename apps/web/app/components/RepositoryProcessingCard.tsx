@@ -84,11 +84,11 @@ useEffect(() => {
                     border
                     border-red-500/30
                     bg-red-500/10
-                    p-4
+                    p-3 md:p-4
                 "
             >
 
-                <div className="flex items-center gap-3">
+                <div className="flex items-start gap-3">
 
                     <span className="text-2xl">
                         ❌
@@ -135,11 +135,11 @@ useEffect(() => {
                 border
                 border-zinc-800
                 bg-zinc-900
-                p-4
+                p-3 md:p-4
             "
         >
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-start gap-2">
 
                 <span className="animate-pulse text-xl">
                     ⚡
@@ -147,7 +147,7 @@ useEffect(() => {
 
                 <div>
 
-                    <p className="font-semibold">
+                    <p className="text-sm md:text-base font-semibold">
                         {status === "READY"
                             ? "Repository Ready"
                             : "Building Repository Intelligence"}
@@ -179,7 +179,7 @@ useEffect(() => {
 
                 </div>
 
-                <div className="mt-2 flex justify-between text-xs">
+                <div className="mt-2 flex flex-col gap-1 md:flex-row md:justify-between text-xs">
 
                     <span className="text-violet-300 font-medium">
                         {displayMessage}
@@ -219,7 +219,7 @@ useEffect(() => {
 
                     </p>
 
-                    <p className="mt-1 text-sm text-zinc-300">
+                    <p className="mt-1 text-xs md:text-sm text-zinc-300">
 
                         {tips[tipIndex]}
 
@@ -266,13 +266,16 @@ useEffect(() => {
                                 </span>
 
                                 <span
-                                    className={
-                                        index < currentIndex || status === "READY"
-                                            ? "text-zinc-100"
-                                            : index === currentIndex
-                                            ? "text-violet-300"
-                                            : "text-zinc-500"
-                                    }
+                                    className={`
+                                        text-xs md:text-sm
+                                        ${
+                                            index < currentIndex || status === "READY"
+                                                ? "text-zinc-100"
+                                                : index === currentIndex
+                                                ? "text-violet-300"
+                                                : "text-zinc-500"
+                                        }
+                                    `}
                                 >
                                     {labels[item]}
                                 </span>

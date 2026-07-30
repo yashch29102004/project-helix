@@ -67,8 +67,9 @@ export default function Message({
       <div
         className={`
           relative
-          max-w-5xl
-          w-fit
+          w-full
+          max-w-[92%]
+          md:max-w-5xl
           rounded-2xl
           border
           shadow-xl
@@ -101,12 +102,12 @@ export default function Message({
         `}
       >
 
-      <div className="mb-4 flex items-center gap-3">
+      <div className="mb-4 flex items-center gap-2 md:gap-3">
 
         {role === "user" ? (
 
           <>
-            <div className="h-10 w-10 rounded-full bg-blue-500 flex items-center justify-center font-bold">
+            <div className="h-9 w-9 md:h-10 md:w-10 rounded-full bg-blue-500 flex items-center justify-center font-bold">
               Y
             </div>
 
@@ -120,16 +121,16 @@ export default function Message({
         ) : (
 
           <>
-            <div className="h-10 w-10 rounded-full bg-violet-600 flex items-center justify-center">
+            <div className="h-9 w-9 md:h-10 md:w-10 rounded-full bg-violet-600 flex items-center justify-center">
               ⚡
             </div>
 
             <div>
-              <div className="font-semibold">
+              <div className="text-sm md:text-base font-semibold">
                 Project Helix
               </div>
 
-              <div className="text-xs text-zinc-400">
+              <div className="text-[11px] md:text-xs text-zinc-400">
                 Repository Intelligence
               </div>
             </div>
@@ -201,6 +202,12 @@ export default function Message({
                               style={oneDark}
                               language={match[1]}
                               PreTag="div"
+                              wrapLongLines
+                              customStyle={{
+                                  overflowX: "auto",
+                                  fontSize: "13px",
+                                  borderRadius: "12px",
+                              }}
                           >
 
                               {code}
@@ -215,7 +222,7 @@ export default function Message({
 
               return (
                 <code
-                  className="bg-zinc-900 px-1 py-0.5 rounded"
+                  className="bg-zinc-900 px-1.5 py-0.5 text-xs md:text-sm rounded"
                   {...rest}
                 >
                   {children}
@@ -263,12 +270,15 @@ export default function Message({
                   <button
                       onClick={onCopy}
                       className="
-                      h-9
+                      h-8
+                      md:h-9
                       rounded-lg
                       border
                       border-zinc-700
-                      px-4
-                      text-sm
+                      px-3
+                      md:px-4
+                      text-xs
+                      md:text-sm
                       hover:bg-zinc-800
                       transition
                       "
@@ -283,12 +293,15 @@ export default function Message({
                   <button
                       onClick={onRegenerate}
                       className="
-                      h-9
+                      h-8
+                      md:h-9
                       rounded-lg
                       border
                       border-zinc-700
-                      px-4
-                      text-sm
+                      px-3
+                      md:px-4
+                      text-xs
+                      md:text-sm
                       hover:bg-zinc-800
                       transition
                       "
@@ -318,7 +331,7 @@ export default function Message({
 
                       <div
                           key={index}
-                          className="rounded-lg bg-zinc-900 px-3 py-2 text-sm"
+                          className="rounded-lg bg-zinc-900 px-3 py-2 text-xs md:text-sm"
                       >
 
                           <div className="font-medium">

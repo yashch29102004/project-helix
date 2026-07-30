@@ -16,7 +16,7 @@ export default function Home() {
 const [repositoryStatus, setRepositoryStatus] = useState<RepositoryStatusResponse | null>(null);
 
   return (
-    <main className="flex h-screen">
+    <main className="flex h-screen pt-14 md:pt-0 overflow-hidden bg-zinc-950">
 
       <Sidebar
         selectedSession={selectedSession}

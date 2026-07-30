@@ -17,6 +17,7 @@ import RepositoryProcessingCard from "./RepositoryProcessingCard";
 import { toast } from "sonner";
 import RepositoryStatsCard from "./RepositoryStatsCard";
 import type { RepositoryStatusResponse } from "../types/repository";
+import { Menu, X } from "lucide-react";
 
 type SidebarProps = {
   selectedSession: string | null;
@@ -55,6 +56,7 @@ export default function Sidebar({
   const menuRef = useRef<HTMLDivElement>(null);
   const [editedTitle, setEditedTitle] = useState("");
   const [importOpen, setImportOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   async function refreshSessions() {
 
@@ -197,7 +199,10 @@ useEffect(() => {
     setSelectedSession(data.session_id);
 
     await refreshSessions();
+
     setMenuOpen(null);
+
+    setMobileOpen(false);
 
   } catch (err) {
 
@@ -340,7 +345,76 @@ async function handleRename(
 
   <>
     
-    <aside className="w-80 bg-zinc-950 border-r border-zinc-800 flex flex-col">
+      {/* Mobile Header */}
+
+      <div className="fixed top-0 left-0 right-0 z-40 md:hidden flex items-center justify-between border-b border-zinc-800 bg-zinc-950 px-4 py-3">
+
+          <h1 className="font-bold text-lg">
+              ⚡ Project Helix
+          </h1>
+
+          <button
+              onClick={() => setMobileOpen(true)}
+          >
+              <Menu size={24}/>
+          </button>
+
+      </div>
+
+      {/* Overlay */}
+
+      {mobileOpen && (
+
+          <div
+              onClick={() => setMobileOpen(false)}
+              className="fixed inset-0 z-40 bg-black/50 md:hidden"
+          />
+
+      )}
+
+      <aside
+          className={`
+              fixed
+              left-0
+              top-0
+              z-50
+              h-screen
+              w-[90vw]
+              max-w-80
+              bg-zinc-950
+              border-r
+              border-zinc-800
+              flex
+              flex-col
+              transform
+              transition-transform
+              ease-in-out
+              duration-300
+
+              ${
+                  mobileOpen
+                      ? "translate-x-0"
+                      : "-translate-x-full"
+              }
+
+              md:translate-x-0
+              md:relative
+          `}
+      >
+
+        <div className="md:hidden flex justify-between items-center p-3 border-b border-zinc-800">
+
+          <h2 className="font-semibold">Menu</h2>
+
+            <button
+                onClick={() => setMobileOpen(false)}
+            >
+
+                <X size={24}/>
+
+            </button>
+
+        </div>
 
       {/* Top */}
       <div className="p-3 border-b border-[#303030]">
@@ -405,6 +479,9 @@ async function handleRename(
 
                           await refreshSessions();
                       }
+
+                      setMobileOpen(false);
+
                   }}
                 />
 
@@ -482,7 +559,7 @@ async function handleRename(
 
       </div>
 
-        <div className="flex-1 overflow-y-auto px-2 py-3 space-y-1">
+        <div className="flex-1 overflow-y-auto px-2 py-3 space-y-1 pb-24">
 
         {loading ? (
           <div className="px-3 py-3 text-sm text-zinc-500">
@@ -555,9 +632,10 @@ async function handleRename(
             ) : (
 
               <button
-                  onClick={() =>
-                      setSelectedSession(session.id)
-                  }
+                  onClick={() => {
+                      setSelectedSession(session.id);
+                      setMobileOpen(false);
+                  }}
                   className="
                       flex
                       flex-1
@@ -695,7 +773,7 @@ async function handleRename(
 
       {/* Bottom */}
 
-        <div className="border-t border-zinc-800 p-3">
+        <div className="border-t border-zinc-800 p-3 pb-6 md:pb-3">
 
             <div className="rounded-xl border border-zinc-800 bg-zinc-900 p-3">
 

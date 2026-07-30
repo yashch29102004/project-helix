@@ -58,8 +58,8 @@ export default function ChatWindow({
   }, [messages]);
 
   return (
-    <div className="flex-1 flex flex-col">
-      <section className="flex-1 overflow-y-auto p-8">
+    <div className="flex-1 flex flex-col min-w-0">
+      <section className="flex-1 overflow-y-auto p-3 md:p-8">
 
         {messages.length === 0 && (
           <div className="flex h-full items-center justify-center">
@@ -76,31 +76,31 @@ export default function ChatWindow({
 
               )}
 
-              <div className="mb-8 text-7xl">
+              <div className="mb-6 text-5xl md:text-7xl">
 
                   ⚡
 
               </div>
 
-              <h1 className="text-5xl font-bold tracking-tight">
+              <h1 className="text-3xl md:text-5xl font-bold tracking-tight">
 
                   Project Helix
 
               </h1>
 
-              <p className="mt-4 text-lg text-zinc-400">
+              <p className="mt-4 text-base md:text-lg text-zinc-400">
 
                   AI-powered Repository Intelligence
 
               </p>
 
-              <p className="mt-2 text-zinc-500">
+              <p className="mt-2 text-sm md:text-base text-zinc-500">
 
                   Ask questions about your codebase and understand any repository instantly.
 
               </p>
 
-              <div className="mt-12 grid grid-cols-2 gap-4">
+              <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-4">
 
                   <button
                     disabled={!repositoryReady}
